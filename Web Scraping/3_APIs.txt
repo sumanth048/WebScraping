@@ -1,0 +1,33 @@
+Data.gov Fuel Stations API: https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=ghyAVigJ8llaPcTOAd4r4HJa72gwBCadMkj8vcCE&location=Denver+CO
+Data.gov Utility Rates API:  https://developer.nrel.gov/api/utility_rates/v3.json?api_key=ghyAVigJ8llaPcTOAd4r4HJa72gwBCadMkj8vcCE&address=1600+Amphitheatre+Parkway,+Mountain+View,+CA
+
+School API:
+https://api.data.gov/ed/collegescorecard/v1/schools?api_key=ghyAVigJ8llaPcTOAd4r4HJa72gwBCadMkj8vcCE&school.name=North%20Dakota%20State%20University
+
+
+library(httr)
+
+URL <- "https://api.data.gov/ed/collegescorecard/v1/schools?"
+
+# import all available data for NDSU
+ndsu_req <- GET(URL, query = list(api_key = key1,
+                                  school.name = "North Dakota State University"))
+ndsu_data <- content(ndsu_req)
+ndsu_data$results[[3]]$`2012`$completion$`8_yr_completion`
+
+---------------
+		
+#get key from http://developer.nytimes.com/apps/register
+library(rtimes)
+
+# article search for the term 'Trump'
+articles <- as_search(q = "Trump", 
+                 begin_date = "20150101", 
+                 end_date = '20160101',
+                 key = article_key)
+				 
+articles$meta
+articles$data[3]
+
+---------------
+
